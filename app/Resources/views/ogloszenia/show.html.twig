@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ogloszenium</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ogloszenium.id }}</td>
+            </tr>
+            <tr>
+                <th>Tresc</th>
+                <td>{{ ogloszenium.tresc }}</td>
+            </tr>
+            <tr>
+                <th>Szkola</th>
+                <td>{{ ogloszenium.szkola }}</td>
+            </tr>
+            <tr>
+                <th>Przedmiot</th>
+                <td>{{ ogloszenium.przedmiot }}</td>
+            </tr>
+            <tr>
+                <th>Kontakt</th>
+                <td>{{ ogloszenium.kontakt }}</td>
+            </tr>
+            <tr>
+                <th>Cena</th>
+                <td>{{ ogloszenium.cena }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ogloszenia_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('ogloszenia_edit', { 'id': ogloszenium.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

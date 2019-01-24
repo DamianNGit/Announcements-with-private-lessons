@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ogloszenias list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tresc</th>
+                <th>Szkola</th>
+                <th>Przedmiot</th>
+                <th>Kontakt</th>
+                <th>Cena</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ogloszenium in ogloszenias %}
+            <tr>
+                <td><a href="{{ path('ogloszenia_show', { 'id': ogloszenium.id }) }}">{{ ogloszenium.id }}</a></td>
+                <td>{{ ogloszenium.tresc }}</td>
+                <td>{{ ogloszenium.szkola }}</td>
+                <td>{{ ogloszenium.przedmiot }}</td>
+                <td>{{ ogloszenium.kontakt }}</td>
+                <td>{{ ogloszenium.cena }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ogloszenia_show', { 'id': ogloszenium.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ogloszenia_edit', { 'id': ogloszenium.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ogloszenia_new') }}">Create a new ogloszenium</a>
+        </li>
+    </ul>
+{% endblock %}

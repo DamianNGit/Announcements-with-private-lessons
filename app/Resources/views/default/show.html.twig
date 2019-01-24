@@ -1,0 +1,98 @@
+{#{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    <h1>{{ ogloszenie.tresc }}</h1>
+        <div>
+            <p>{{ ogloszenie.szkola }}</p>
+            <p>{{ ogloszenie.przedmiot }}</p>
+            <p>{{ ogloszenie.kontakt }}</p>
+            <p>{{ ogloszenie.cena }}</p>
+            
+            
+            {% if app.user %}
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button class="btn btn-success"> Dodaj ołoszenie </button>
+                {{ form_end(form) }}
+            {% else %}
+                <p>Zaloguj się. <a href=" {{ path('fos_user_security_login') }}"> Zaloguj </a></p>
+            {% endif %}
+            
+ #}           
+            {#
+            Formularz do wyświetlania komentarzy 
+            
+            {% for comment in post.comments %}
+            
+                <div>
+                    <p> {{ comment.content }} </p>
+                    <span class="pull-right"> Dodany: {{ post.createdAt|date('H:i d/m/Y') przez: {% if comment.user %} {{comment.user}} {% endif %}  </span>
+                </div>
+                <br/>
+            
+            {% endfor %}
+            
+            #}
+ {#       </div>
+  
+{% endblock %}#}
+
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="table-responsive">
+    
+                    <h1>{{ ogloszenie.tresc }}</h1>
+                    <p>{{ ogloszenie.szkola }}</p>
+                    <p>{{ ogloszenie.przedmiot }}</p>
+                    <p>{{ ogloszenie.kontakt }}</p>
+                    <p>{{ ogloszenie.cena }}</p>
+                
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+                    
+    
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <hr/>
+            <br/>
+            <h3>Dodaj komentarz</h3>
+            <br/>
+            {% if app.user %}
+                {#{{ form_start(form) }}
+                {{ form_widget(form) }}
+                    <button class="btn btn-success"> Dodaj komentarz </button>
+                {{ form_end(form) }}#}
+            {% else %}
+                <h4 class="pull-left">Aby dodać komentarz musisz się <a class="btn btn-primary" role="button" href=" {{ path('fos_user_security_login') }}"> zalogować </a></h4>
+            {% endif %}
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+                    
+                
+            {#
+            Formularz do wyświetlania komentarzy 
+            
+            {% for comment in post.comments %}
+            
+                <div>
+                    <p> {{ comment.content }} </p>
+                    <span class="pull-right"> Dodany: {{ post.createdAt|date('H:i d/m/Y') przez: {% if comment.user %} {{comment.user}} {% endif %}  </span>
+                </div>
+                <br/>
+            
+            {% endfor %}
+            
+            #}
+  
+{% endblock %}

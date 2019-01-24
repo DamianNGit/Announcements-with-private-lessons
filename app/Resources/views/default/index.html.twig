@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            {% for message in app.flashes('notice') %}
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1> Lista ogłoszeń z korepetycjami</h1>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <br/>
+    
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                          <th>Treść</th>
+                          <th>Szkoła</th>
+                          <th>Przedmiot</th>
+                          <th>Kontakt</th>
+                          <th>Cena</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ogloszenie in ogloszenia %}
+                            <tr style="cursor: pointer;" class="clickable-row" data-href="{{ path('PokazOgloszenie', {'id':ogloszenie.id}) }}">
+                                <td>{{ ogloszenie.tresc }}</a></td>
+                                <td>{{ ogloszenie.szkola }}</td>
+                                <td>{{ ogloszenie.przedmiot }}</td>
+                                <td>{{ ogloszenie.kontakt }}</td>
+                                <td>{{ ogloszenie.cena }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            {% if app.user %}
+                <a class="btn btn-success pull-right" role="button" href=" {{ path('DodajOgloszenie') }}"> Dodaj ogłoszenie</a>
+            {% else %}
+                <h4 class="pull-right">Aby dodać ogłoszenie musisz się <a class="btn btn-primary" role="button" href=" {{ path('fos_user_security_login') }}"> zalogować. </a></h4>
+            {% endif %}
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+                    
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="navigation">
+                {{ knp_pagination_render(ogloszenia) }}
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+  
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/href.js') }}"></script>
+{% endblock %}

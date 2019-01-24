@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <h1>Dodaj ogłoszenie</h1>
+            <br/>
+            {% if app.user %}
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-success pull-right"> Dodaj ołoszenie </button>
+            {{ form_end(form) }}
+            {% else %}
+                <h4 class="pull-left">Aby dodać ogłoszenie musisz się <a class="btn btn-primary" role="button" href=" {{ path('fos_user_security_login') }}"> zalogować </a></h4>
+            {% endif %}
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+  
+{% endblock %}

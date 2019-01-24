@@ -1,0 +1,31 @@
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+.jumbotronM {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.headerPadding {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+}
+
+.navigation {
+    border-radius: 0px;
+}
+
+.sticky {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.foot {
+    margin: 5px 0 5px;
+}
